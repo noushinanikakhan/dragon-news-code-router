@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Link } from "react-router";
+import { Form, Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { use } from "react";
 import { useState } from "react";
@@ -8,9 +8,11 @@ import { useState } from "react";
 const Register = () => {
   const {createUser, setUser, updateUser} = use (AuthContext)
   const [nameError, setNameError] = useState("")
+  const navigate = useNavigate() 
+
+
+
   const handleRegister =(e) =>{
-
-
     e.preventDefault()
     console.log(e.target) 
     const form = (e.target )
@@ -29,8 +31,9 @@ const Register = () => {
     .then((result)=> {
       const user =result.user
       // console.log(user)
-      updateUser({displayUser: name, photoURL: photo}).then(()=>  {
-        setUser({...user, displayUser: name, photoURL: photo })
+      updateUser({displayName: name, photoURL: photo}).then(()=>  {
+        setUser({...user, displayName : name, photoURL: photo })
+        navigate("/")
       })
       .catch((error)=>{
          console.log(error)

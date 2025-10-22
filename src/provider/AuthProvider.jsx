@@ -27,7 +27,7 @@ const signIn = (email, password) => {
 return signInWithEmailAndPassword(auth, email, password )}
 
 const updateUser = (updateData )=> {
-  return updateProfile= (auth.currentUser, updateData)
+  return updateProfile (auth.currentUser, updateData)
 }
 const logOut =()=> {
   return signOut (auth)
@@ -52,6 +52,7 @@ const authData = {
   logOut,
   signIn,
   updateUser,
+  updateProfile,
 } 
 
 
